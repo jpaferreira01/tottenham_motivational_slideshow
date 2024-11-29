@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #132257;
+      background-color: #f0f0f0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -47,12 +47,12 @@
       padding: 10px;
       border-radius: 10px;
     }
+    /* Arrow button styles */
     .prev, .next {
       cursor: pointer;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 10px;
       padding: 16px;
       color: white;
       font-weight: bold;
@@ -63,14 +63,10 @@
       z-index: 1;
     }
     .prev {
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
+      top: 10px; /* Moves the "previous" arrow to the top */
     }
     .next {
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
+      bottom: 10px; /* Moves the "next" arrow to the bottom */
     }
     .prev:hover, .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
@@ -94,7 +90,7 @@
       transition: background-color 0.6s ease;
     }
     .active, .dot:hover {
-      background-color: #ffffff;
+      background-color: #717171;
     }
 
     /* Estilo para telas pequenas */
@@ -119,12 +115,14 @@
     <img src="slide3.jpg" alt="Slide 3">
   </div>
 
+  <!-- Navigation arrows (Top and Bottom arrows) -->
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 
 <br>
 
+<!-- Dots for navigation -->
 <div class="dots">
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
@@ -135,37 +133,37 @@
   let slideIndex = 1;
   showSlides(slideIndex);
 
-  // Função para avançar ou voltar entre os slides
+  // Function to move to the next or previous slide
   function plusSlides(n) {
     showSlides(slideIndex += n);
   }
 
-  // Função para navegar diretamente para um slide específico
+  // Function to navigate to a specific slide
   function currentSlide(n) {
     showSlides(slideIndex = n);
   }
 
-  // Função para mostrar o slide atual
+  // Function to show the current slide
   function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("slides");
     let dots = document.getElementsByClassName("dot");
-    
-    // Reseta a navegação entre os slides
+
+    // Reset navigation when index goes out of bounds
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
     
-    // Esconde todos os slides
+    // Hide all slides
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
     
-    // Remove a classe "ativa" dos pontos
+    // Remove active class from dots
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
-    
-    // Exibe o slide atual
+
+    // Display the current slide
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
   }
