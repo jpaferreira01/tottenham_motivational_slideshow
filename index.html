@@ -44,7 +44,6 @@
       transform: translate(-50%, -50%);
       font-size: 24px;
       color: white;
-      background-color: rgba(0, 0, 0, 0.5);
       padding: 10px;
       border-radius: 10px;
     }
@@ -58,10 +57,12 @@
       z-index: 1;
     }
     .arrow-up {
-      top: 10px;
+      top: 20px;
+      background-color:rgba(0, 0, 0, 0.5);
     }
     .arrow-down {
-      bottom: 10px;
+      bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
     }
     .arrow-up:hover, .arrow-down:hover {
       cursor: pointer;
@@ -70,8 +71,8 @@
 
     .dots {
       position: absolute;
-      bottom: 10px;
-      left: 50%;
+      bottom: 50%;
+      right: 10px;
       transform: translateX(-50%);
       text-align: center;
       z-index: 1;
@@ -104,27 +105,27 @@
 <div class="slideshow-container">
   <!-- Slide 1 with phrase -->
   <div class="slides" id="slide1">
-    <div class="text">"The Tottenham journey is just beginning..."</div>
+    <div class="text">"Slide 1"</div>
   </div>
 
   <!-- Slide 2 -->
   <div class="slides">
-    <img src="slide2.jpg" alt="Slide 2">
+    <div class="text">"Slide 2"</div>
   </div>
 
   <!-- Slide 3 -->
   <div class="slides">
-    <img src="slide3.jpg" alt="Slide 3">
+    <div class="text">"Slide 3"</div>
   </div>
 
   <!-- Slide 4 -->
   <div class="slides">
-    <img src="slide4.jpg" alt="Slide 4">
+    <div class="text">"Slide 4"</div>
   </div>
 
   <!-- Slide 5 -->
   <div class="slides">
-    <img src="slide5.jpg" alt="Slide 5">
+    <div class="text">"Slide 5"</div>
   </div>
 
   <!-- Up and Down arrow indicators -->
