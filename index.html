@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tottenham Motivational Slideshow</title>
+  <title>Vertical Slideshow</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
+      background-color: #132257; /* Updated background color */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden; /* Prevents page from scrolling */
     }
     .slideshow-container {
       position: relative;
@@ -167,6 +168,31 @@
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
   }
+
+  // Event listener for scroll wheel (desktop)
+  window.addEventListener('wheel', function(event) {
+    if (event.deltaY > 0) {
+      plusSlides(1); // Scroll down (next slide)
+    } else {
+      plusSlides(-1); // Scroll up (previous slide)
+    }
+  });
+
+  // Event listener for touch swipe (mobile)
+  let touchStartY = 0;
+  window.addEventListener('touchstart', function(event) {
+    touchStartY = event.touches[0].clientY;
+  });
+
+  window.addEventListener('touchend', function(event) {
+    let touchEndY = event.changedTouches[0].clientY;
+    if (touchStartY - touchEndY > 50) {
+      plusSlides(1); // Swipe down (next slide)
+    } else if (touchEndY - touchStartY > 50) {
+      plusSlides(-1); // Swipe up (previous slide)
+    }
+  });
+
 </script>
 
 </body>
