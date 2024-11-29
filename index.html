@@ -36,6 +36,17 @@
       object-fit: cover;
       border-radius: 10px;
     }
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+    }
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -98,8 +109,8 @@
 <body>
 
 <div class="slideshow-container">
-  <div class="slides">
-    <img src="slide1.jpg" alt="Slide 1">
+  <div class="slides" id="slide1">
+    <div class="text">Então o Tottenham perdeu contra o...</div>
   </div>
   <div class="slides">
     <img src="slide2.jpg" alt="Slide 2">
@@ -136,16 +147,31 @@
     let i;
     let slides = document.getElementsByClassName("slides");
     let dots = document.getElementsByClassName("dot");
+    
+    // Reset the slides
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
+    
+    // Hide all slides
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
+    
+    // Remove active class from dots
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
+    
+    // Show current slide
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
+    
+    // For the first slide, wait for the text to show before proceeding to the image
+    if (slideIndex === 1) {
+      setTimeout(function() {
+        plusSlides(1);  // Automatically move to the next slide after 2 seconds
+      }, 2000);  // 2-second delay to show the text
+    }
   }
 </script>
 
