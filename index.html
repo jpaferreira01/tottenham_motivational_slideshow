@@ -52,17 +52,21 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 30px;
+      font-size: 50px; /* Increased size */
       color: white;
       z-index: 1;
     }
     .arrow-up {
-      top: 20px;
+      top: 5px;
       background-color:rgba(0, 0, 0, 0.5);
+      width: 20px;
+      border-radius: 10px;
     }
     .arrow-down {
-      bottom: 20px;
+      bottom: 5px;
       background-color: rgba(0, 0, 0, 0.5);
+      width: 20px;
+      border-radius: 10px;
     }
     .arrow-up:hover, .arrow-down:hover {
       cursor: pointer;
@@ -167,8 +171,8 @@
     let dots = document.getElementsByClassName("dot");
 
     // Reset navigation when index goes out of bounds
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
+    if (n > slides.length) {slideIndex = slides.length}
+    if (n < 1) {slideIndex = 1}
     
     // Hide all slides
     for (i = 0; i < slides.length; i++) {
