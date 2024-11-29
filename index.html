@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #132257; /* Updated background color */
+      background-color: #132257; /* Background color */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,7 +20,7 @@
       position: relative;
       width: 100%;
       max-width: 500px; /* Ajusta a largura para dispositivos móveis */
-      height: 80%; /* O slideshow ocupa a maior parte da tela */
+      height: 80%; /* Slideshow ocupa a maior parte da tela */
       overflow: hidden;
       border-radius: 10px;
     }
@@ -48,30 +48,26 @@
       padding: 10px;
       border-radius: 10px;
     }
-    /* Arrow button styles */
-    .prev, .next {
-      cursor: pointer;
+    /* Arrow indicator styles */
+    .arrow-up, .arrow-down {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      padding: 16px;
+      font-size: 30px;
       color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
       z-index: 1;
     }
-    .prev {
-      top: 10px; /* Moves the "previous" arrow to the top */
+    .arrow-up {
+      top: 10px;
     }
-    .next {
-      bottom: 10px; /* Moves the "next" arrow to the bottom */
+    .arrow-down {
+      bottom: 10px;
     }
-    .prev:hover, .next:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    .arrow-up:hover, .arrow-down:hover {
+      cursor: pointer;
+      color: #717171; /* Change color on hover */
     }
+
     .dots {
       position: absolute;
       bottom: 10px;
@@ -106,19 +102,34 @@
 <body>
 
 <div class="slideshow-container">
+  <!-- Slide 1 with phrase -->
   <div class="slides" id="slide1">
-    <div class="text">Então o Tottenham perdeu contra o...</div>
-  </div>
-  <div class="slides">
-    <img src="slide2.jpg" alt="Slide 2">
-  </div>
-  <div class="slides">
-    <img src="slide3.jpg" alt="Slide 3">
+    <div class="text">"Então o jogo contra o ... não correu bem"</div>
   </div>
 
-  <!-- Navigation arrows (Top and Bottom arrows) -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <!-- Slide 2 -->
+  <div class="slides">
+    <div class="text">"The Tottenham journey is just beginning..."</div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slides">
+    <div class="text">"The Tottenham journey is just beginning..."</div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slides">
+    <img src="slide4.jpg" alt="Slide 4">
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slides">
+    <div class="text">"The Tottenham journey is just beginning..."</div>
+  </div>
+
+  <!-- Up and Down arrow indicators -->
+  <span class="arrow-up" onclick="plusSlides(-1)">&#8593;</span> <!-- Up arrow -->
+  <span class="arrow-down" onclick="plusSlides(1)">&#8595;</span> <!-- Down arrow -->
 </div>
 
 <br>
@@ -128,6 +139,8 @@
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+  <span class="dot" onclick="currentSlide(5)"></span>
 </div>
 
 <script>
