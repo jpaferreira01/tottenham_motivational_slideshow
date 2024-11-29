@@ -104,17 +104,17 @@
 <div class="slideshow-container">
   <!-- Slide 1 with phrase -->
   <div class="slides" id="slide1">
-    <div class="text">"Então o jogo contra o ... não correu bem"</div>
+    <div class="text">"The Tottenham journey is just beginning..."</div>
   </div>
 
   <!-- Slide 2 -->
   <div class="slides">
-    <div class="text">"The Tottenham journey is just beginning..."</div>
+    <img src="slide2.jpg" alt="Slide 2">
   </div>
 
   <!-- Slide 3 -->
   <div class="slides">
-    <div class="text">"The Tottenham journey is just beginning..."</div>
+    <img src="slide3.jpg" alt="Slide 3">
   </div>
 
   <!-- Slide 4 -->
@@ -124,7 +124,7 @@
 
   <!-- Slide 5 -->
   <div class="slides">
-    <div class="text">"The Tottenham journey is just beginning..."</div>
+    <img src="slide5.jpg" alt="Slide 5">
   </div>
 
   <!-- Up and Down arrow indicators -->
@@ -180,11 +180,26 @@
     // Display the current slide
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
+
+    // Hide the up arrow on the first slide and down arrow on the last slide
+    if (slideIndex === 1) {
+      document.querySelector('.arrow-up').style.display = 'none';
+    } else {
+      document.querySelector('.arrow-up').style.display = 'block';
+    }
+
+    if (slideIndex === slides.length) {
+      document.querySelector('.arrow-down').style.display = 'none';
+    } else {
+      document.querySelector('.arrow-down').style.display = 'block';
+    }
   }
 
   // Event listener for scroll wheel (desktop)
   window.addEventListener('wheel', function(event) {
-    if (event.deltaY > 0) {
+    if (slideIndex === 1 && event.deltaY > 0) {
+      window.location.reload(); // Refresh the page when on the first slide and scroll down
+    } else if (event.deltaY > 0) {
       plusSlides(1); // Scroll down (next slide)
     } else {
       plusSlides(-1); // Scroll up (previous slide)
@@ -203,6 +218,10 @@
       plusSlides(1); // Swipe down (next slide)
     } else if (touchEndY - touchStartY > 50) {
       plusSlides(-1); // Swipe up (previous slide)
+    }
+
+    if (slideIndex === 1 && touchEndY - touchStartY > 50) {
+      window.location.reload(); // Refresh the page when on the first slide and swipe down
     }
   });
 
