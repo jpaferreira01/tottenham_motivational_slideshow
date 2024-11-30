@@ -59,6 +59,7 @@
     .arrow-up {
       top: 0px;
       background-color:rgba(0, 0, 0, 0.5);
+      background-position: 0%;
       width: 20px;
       padding: 10px;
       border-radius: 1px;
@@ -66,9 +67,10 @@
     .arrow-down {
       bottom: 0px;
       background-color: rgba(0, 0, 0, 0.5);
+      background-position: 0%;
       width: 20px;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 1px;
     }
     .arrow-up:hover, .arrow-down:hover {
       cursor: pointer;
@@ -154,16 +156,20 @@
 
 <script>
   let slideIndex = 1;
+  let inactivityTimeout;
+
   showSlides(slideIndex);
 
   // Function to move to the next or previous slide
   function plusSlides(n) {
     showSlides(slideIndex += n);
+    resetInactivityTimer();
   }
 
   // Function to navigate to a specific slide
   function currentSlide(n) {
     showSlides(slideIndex = n);
+    resetInactivityTimer();
   }
 
   // Function to show the current slide
@@ -172,25 +178,20 @@
     let slides = document.getElementsByClassName("slides");
     let dots = document.getElementsByClassName("dot");
 
-    // Reset navigation when index goes out of bounds
-    if (n > slides.length) {slideIndex = slides.length}
-    if (n < 1) {slideIndex = 1}
-    
-    // Hide all slides
+    if (n > slides.length) { slideIndex = slides.length; }
+    if (n < 1) { slideIndex = 1; }
+
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
-    
-    // Remove active class from dots
+
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
 
-    // Display the current slide
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
 
-    // Hide the up arrow on the first slide and down arrow on the last slide
     if (slideIndex === 1) {
       document.querySelector('.arrow-up').style.display = 'none';
     } else {
@@ -202,6 +203,31 @@
     } else {
       document.querySelector('.arrow-down').style.display = 'block';
     }
+
+    resetInactivityTimer();
+  }
+
+  // Function to hide the arrows and dots
+  function hideControls() {
+    document.querySelector('.arrow-up').style.opacity = '0';
+    document.querySelector('.arrow-down').style.opacity = '0';
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.style.opacity = '0');
+  }
+
+  // Function to show the arrows and dots
+  function showControls() {
+    document.querySelector('.arrow-up').style.opacity = '1';
+    document.querySelector('.arrow-down').style.opacity = '1';
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.style.opacity = '1');
+  }
+
+  // Function to reset the inactivity timer
+  function resetInactivityTimer() {
+    clearTimeout(inactivityTimeout);
+    showControls();
+    inactivityTimeout = setTimeout(hideControls, 3000); // Hide controls after 3 seconds of inactivity
   }
 
   // Event listener for scroll wheel (desktop)
@@ -234,7 +260,16 @@
     }
   });
 
+  // Reset inactivity timer on any interaction
+  document.addEventListener('click', resetInactivityTimer);
+  document.addEventListener('mousemove', resetInactivityTimer);
+  document.addEventListener('touchstart', resetInactivityTimer);
+  document.addEventListener('wheel', resetInactivityTimer);
+
+  // Initial timer start to hide controls
+  inactivityTimeout = setTimeout(hideControls, 3000);
 </script>
+
 
 </body>
 </html>
