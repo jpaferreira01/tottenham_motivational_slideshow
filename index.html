@@ -276,6 +276,12 @@
     }
   });
 
+  // Reset inactivity timer on various interactions
+  document.addEventListener('click', resetInactivityTimer);
+  document.addEventListener('mousemove', resetInactivityTimer);
+  document.addEventListener('touchstart', resetInactivityTimer);
+  document.addEventListener('wheel', resetInactivityTimer);
+  
 </script>
 
 </body>
