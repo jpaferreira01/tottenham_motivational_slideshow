@@ -227,15 +227,13 @@
   function resetInactivityTimer() {
     clearTimeout(inactivityTimeout);
     showControls();
-    inactivityTimeout = setTimeout(hideControls, 3000); // Hide controls after 3 seconds of inactivity
+    inactivityTimeout = setTimeout(hideControls, 1000); // Hide controls after 3 seconds of inactivity
   }
 
   // Event listener for scroll wheel (desktop)
   window.addEventListener('wheel', function(event) {
     if (slideIndex === 1 && event.deltaY > 0) {
-      window.location.reload(); // Refresh the page when on the first slide and scroll down
-    } else if (event.deltaY > 0) {
-      plusSlides(1); // Scroll down (next slide)
+      plusSlides(1);
     } else {
       plusSlides(-1); // Scroll up (previous slide)
     }
