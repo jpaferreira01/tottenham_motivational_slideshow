@@ -147,10 +147,6 @@
   <span class="dot" onclick="currentSlide(4)"></span>
 </div>
 
-<div id="reload-icon" style="display: none; position: absolute; top: 5%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; font-size: 30px; color: white;">
-  &#x21bb; <!-- Unicode for a circular arrow (reload symbol) -->
-</div>
-
 <script>
   let slideIndex = 0;
   let inactivityTimeout;
@@ -237,20 +233,16 @@
       // Swipe up: Move to the next slide
       plusSlides(1);
     } else if (deltaY < -50) {
-      // Swipe down: Move to the previous slide
+      // Swipe down: Move to the previous slide or reload if on the first slide
       if (slideIndex === 0) {
-        // Show reload icon and refresh page after a delay
-        const reloadIcon = document.getElementById('reload-icon');
-        reloadIcon.style.display = 'block'; // Show the icon
-
-        setTimeout(() => {
-          window.location.reload(); // Reload the page after showing the icon
-        }, 1000); // 1-second delay
+        // Trigger native browser reload with its animation
+        window.location.reload();
       } else {
         plusSlides(-1);
       }
     }
   });
+
 </script>
 
 </body>
