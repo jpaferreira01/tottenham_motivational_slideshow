@@ -175,7 +175,7 @@
   let inactivityTimeout;
   let isTransitioning = false;
 
-  showSlides(slideIndex);
+  //showSlides(slideIndex);
 
   // Function to move to the next or previous slide
   function plusSlides(n) {
@@ -292,7 +292,7 @@
   document.addEventListener('wheel', resetInactivityTimer);
 
   // Initial timer start to hide controls
-  inactivityTimeout = setTimeout(hideControls, 3000);
+  inactivityTimeout = setTimeout(hideControls, 1000);
 </script>
 
 
