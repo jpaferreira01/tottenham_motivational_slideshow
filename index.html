@@ -25,21 +25,21 @@
       padding-bottom: 20px;
     }
     .slides {
-      opacity: 0;
+      opacity: 1;
       position: absolute;
       width: 100%;
       height: 100%;
       transition: opacity 0.5s ease, transform 0.5s ease;
+      background-image: url('https://raw.githubusercontent.com/jpaferreira01/tottenham_motivational_slideshow/refs/heads/main/images/tottenham_logo_bg.png'); /* Test with this image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .slides.active {
       opacity: 1;
       background-color: #132257;
       transform: translateY(0);
-      background-image: url('https://raw.githubusercontent.com/jpaferreira01/tottenham_motivational_slideshow/refs/heads/main/images/tottenham_logo_bg.png'); /* Test with this image */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
     .slides.previous {
       transform: translateY(-100%);
