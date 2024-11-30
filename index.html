@@ -130,7 +130,7 @@
 
 <div class="slideshow-container">
   <!-- Slide 1 with phrase -->
-  <div class="slides" id="slide1">
+  <div class="slides active" id="slide1">
     <div class="text">"Slide 1"</div>
   </div>
 
@@ -189,12 +189,7 @@
     showSlides(slideIndex += n);
     resetInactivityTimer();
   }
-  /*
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-    resetInactivityTimer();
-  }
-  */
+
   // Function to navigate to a specific slide
   function currentSlide(n) {
     showSlides(slideIndex = n);
