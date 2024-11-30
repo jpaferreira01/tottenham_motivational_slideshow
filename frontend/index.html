@@ -31,7 +31,7 @@
       height: 100%;
       transition: opacity 0.5s ease, transform 0.5s ease;
       background-color: #132257;
-      background-image: url('https://raw.githubusercontent.com/jpaferreira01/tottenham_motivational_slideshow/refs/heads/main/images/tottenham_logo_bg.png'); /* Test with this image */
+      background-image: url('https://raw.githubusercontent.com/jpaferreira01/tottenham_motivational_slideshow/refs/heads/main/frontend/images/tottenham_logo_bg.png'); /* Test with this image */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -288,24 +288,6 @@
   document.addEventListener('touchstart', resetInactivityTimer);
   document.addEventListener('wheel', resetInactivityTimer);
 
-</script>
-
-<script>
-  async function getLastMatch() {
-      try {
-          const response = await fetch('https://api.football-data.org/v4/teams/73/matches?status=FINISHED', {
-              headers: { 'X-Auth-Token': 'YOUR_API_KEY' } // Replace with your API key
-          });
-          const data = await response.json();
-          const lastMatch = data.matches[data.matches.length - 1];
-          const opponent = lastMatch.awayTeam.name === "Tottenham Hotspur" ? lastMatch.homeTeam.name : lastMatch.awayTeam.name;
-          document.getElementById('slide-text').innerHTML = `So, Tottenham lost again, and this time against ${opponent}.`;
-      } catch (error) {
-          console.error("Error fetching match data:", error);
-      }
-  }
-
-  getLastMatch();
 </script>
 
 </body>
