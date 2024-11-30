@@ -175,7 +175,7 @@
   let inactivityTimeout;
   let isTransitioning = false;
 
-  //showSlides(slideIndex);
+  showSlides(slideIndex);
 
   // Function to move to the next or previous slide
   function plusSlides(n) {
@@ -215,14 +215,14 @@
     }
 
     // Set the active slide
-    slides[slideIndex].classList.add('active');
+    slides[slideIndex - 1].classList.add('active');
 
     // Set previous and next slides for smooth transitions
     if (slideIndex > 1) {
-        slides[slideIndex - 1].classList.add('previous');
+        slides[slideIndex - 2].classList.add('previous');
     }
     if (slideIndex < slides.length) {
-        slides[slideIndex + 1].classList.add('next');
+        slides[slideIndex].classList.add('next');
     }
 
     // Update dots
