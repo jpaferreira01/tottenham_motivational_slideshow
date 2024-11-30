@@ -101,11 +101,13 @@
       background-color: #ffffff;
     }
 
-    /* Estilo para telas pequenas */
-    @media only screen and (max-width: 600px) {
+    @media screen and (max-width: 600px) {
       .slideshow-container {
-        max-width: 100%;
-        height: 100vh; /* Ajusta para telas menores */
+      height: calc(100vh - 50px); /* Adjust this value based on testing */
+    }
+
+    .arrow-down {
+      bottom: 30px; /* Move it above potential on-screen buttons */
       }
     }
   </style>
