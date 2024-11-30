@@ -171,7 +171,7 @@
 </div>
 
 <script>
-  let slideIndex = 1;
+  let slideIndex = 0;
   let inactivityTimeout;
   let isTransitioning = false;
 
@@ -202,7 +202,7 @@
     let dots = document.getElementsByClassName("dot");
 
     if (n > slides.length) { slideIndex = slides.length; }
-    if (n < 1) { slideIndex = 1; }
+    if (n < 1) { slideIndex = 0; }
 
     // Clear all classes
     for (let i = 0; i < slides.length; i++) {
@@ -210,29 +210,29 @@
     }
 
     // Set the active slide
-    slides[slideIndex - 1].classList.add('active');
+    slides[slideIndex].classList.add('active');
 
     // Set previous and next slides for smooth transitions
     if (slideIndex > 1) {
-        slides[slideIndex - 2].classList.add('previous');
+        slides[slideIndex - 1].classList.add('previous');
     }
-    if (slideIndex < slides.length) {
-        slides[slideIndex].classList.add('next');
+    if (slideIndex < slides.length - 1) {
+        slides[slideIndex + 1].classList.add('next');
     }
 
     // Update dots
     for (let i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
-    dots[slideIndex - 1].className += " active";
+    dots[slideIndex].className += " active";
 
-    if (slideIndex === 1) {
+    if (slideIndex === 0) {
       document.querySelector('.arrow-up').style.display = 'none';
     } else {
       document.querySelector('.arrow-up').style.display = 'block';
     }
 
-    if (slideIndex === slides.length) {
+    if (slideIndex === slides.length - 1) {
       document.querySelector('.arrow-down').style.display = 'none';
     } else {
       document.querySelector('.arrow-down').style.display = 'block';
@@ -240,11 +240,6 @@
 
     resetInactivityTimer();
   }
-
-  // Initialize first slide as active
-  document.addEventListener('DOMContentLoaded', () => {
-    showSlides(slideIndex);
-  });
 
   // Function to hide the arrows and dots
   function hideControls() {
@@ -286,7 +281,7 @@
 
   window.addEventListener('touchend', function(event) {
     let touchEndY = event.changedTouches[0].clientY;
-    if (slideIndex === 1 && touchEndY - touchStartY > 50) {
+    if (slideIndex === 0 && touchEndY - touchStartY > 50) {
       window.location.reload(); // Refresh the page when on the first slide and swipe down
     } else if (touchStartY - touchEndY > 50) {
       plusSlides(1); // Swipe down (next slide)
