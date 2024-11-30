@@ -210,27 +210,31 @@
 
     // Clear all classes
     for (let i = 0; i < slides.length; i++) {
-      slides[i].classList.remove('active', 'previous', 'next');
+        slides[i].classList.remove('active', 'previous', 'next');
     }
 
-    for (let i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
+    // Set the active slide
+    slides[slideIndex - 1].classList.add('active');
 
-    // Assign relevant classes for transitions
-    slides[slideIndex - 1].classList.add('active'); // Current slide
+    // Set previous and next slides for smooth transitions
     if (slideIndex > 1) {
-      slides[slideIndex - 2].classList.add('previous'); // Previous slide
+        slides[slideIndex - 2].classList.add('previous');
     }
     if (slideIndex < slides.length) {
-      slides[slideIndex].classList.add('next'); // Next slide
+        slides[slideIndex].classList.add('next');
     }
 
+    // Update dots
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
     dots[slideIndex - 1].className += " active";
-
-    resetInactivityTimer(); // Ensure the timer works as before
   }
 
+  // Initialize first slide as active
+  document.addEventListener('DOMContentLoaded', () => {
+    showSlides(slideIndex);
+  });
 
   // Function to hide the arrows and dots
   function hideControls() {
