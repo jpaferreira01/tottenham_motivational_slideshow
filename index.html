@@ -25,12 +25,26 @@
       padding-bottom: 20px; /* Add padding for bottom buttons */
     }
     .slides {
-      display: none;
+      opacity: 0; /* Start with hidden slides */
       position: absolute;
       width: 100%;
       height: 100%;
-      transition: transform 0.5s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
     }
+    
+    .slides.active {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* Ensure correct position for active slide */
+    }
+  
+    .slides.previous {
+      transform: translateY(-100%); /* Slide up for previous slide */
+    }
+
+    .slides.next {
+      transform: translateY(100%); /* Slide down for next slide */
+    }
+
     img {
       width: 100%;
       height: 100%;
