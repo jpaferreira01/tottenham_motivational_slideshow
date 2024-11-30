@@ -178,10 +178,21 @@
 
   // Function to move to the next or previous slide
   function plusSlides(n) {
+    if (isTransitioning) return; // Prevent navigation during transition
+    isTransitioning = true;
+
+    showSlides(slideIndex += n);
+    
+    setTimeout(() => {
+      isTransitioning = false; // Re-enable navigation after transition
+    }, 500); // Matches the CSS transition duration
+  }
+  /*
+  function plusSlides(n) {
     showSlides(slideIndex += n);
     resetInactivityTimer();
   }
-
+  */
   // Function to navigate to a specific slide
   function currentSlide(n) {
     showSlides(slideIndex = n);
@@ -190,38 +201,35 @@
 
   // Function to show the current slide
   function showSlides(n) {
-    let i;
     let slides = document.getElementsByClassName("slides");
     let dots = document.getElementsByClassName("dot");
 
     if (n > slides.length) { slideIndex = slides.length; }
     if (n < 1) { slideIndex = 1; }
 
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    // Clear all classes
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].classList.remove('active', 'previous', 'next');
     }
 
-    for (i = 0; i < dots.length; i++) {
+    for (let i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
 
-    slides[slideIndex - 1].style.display = "block";
+    // Assign relevant classes for transitions
+    slides[slideIndex - 1].classList.add('active'); // Current slide
+    if (slideIndex > 1) {
+      slides[slideIndex - 2].classList.add('previous'); // Previous slide
+    }
+    if (slideIndex < slides.length) {
+      slides[slideIndex].classList.add('next'); // Next slide
+    }
+
     dots[slideIndex - 1].className += " active";
 
-    if (slideIndex === 1) {
-      document.querySelector('.arrow-up').style.display = 'none';
-    } else {
-      document.querySelector('.arrow-up').style.display = 'block';
-    }
-
-    if (slideIndex === slides.length) {
-      document.querySelector('.arrow-down').style.display = 'none';
-    } else {
-      document.querySelector('.arrow-down').style.display = 'block';
-    }
-
-    resetInactivityTimer();
+    resetInactivityTimer(); // Ensure the timer works as before
   }
+
 
   // Function to hide the arrows and dots
   function hideControls() {
