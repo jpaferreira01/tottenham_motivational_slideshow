@@ -232,7 +232,7 @@
 
   // Event listener for scroll wheel (desktop)
   window.addEventListener('wheel', function(event) {
-    if (slideIndex === 1 && event.deltaY > 0) {
+    if (event.deltaY > 0) {
       plusSlides(1);
     } else {
       plusSlides(-1); // Scroll up (previous slide)
