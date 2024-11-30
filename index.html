@@ -60,69 +60,73 @@
     }
     /* Basic Styles for Arrows */
     .arrow-up, .arrow-down {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px; /* Set width for square background */
-      height: 40px; /* Set height for square background */
-      background-color: black; /* Square background color */
-      border-radius: 10px; /* Rounded corners for the square */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    
-    .arrow-up {
-      top: 20px; /* Position the up arrow */
-    }
-    
-    .arrow-down {
-      bottom: 20px; /* Position the down arrow */
-    }
-    
-    /* Triangle shape (Arrow) */
-    .arrow-up::before, .arrow-down::before {
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      transition: transform 0.3s ease;
-    }
-    
-    /* Up Arrow */
-    .arrow-up::before {
-      border-bottom: 15px solid white; /* White triangle pointing upwards */
-    }
-    
-    /* Down Arrow */
-    .arrow-down::before {
-      border-top: 15px solid white; /* White triangle pointing downwards */
-    }
-    
-    /* Hover Effect */
-    .arrow-up:hover, .arrow-down:hover {
-      background-color: #555; /* Darken background on hover */
-      transform: translateX(-50%) scale(1.1); /* Slightly increase size */
-    }
-    
-    /* Optional: Adding some animation */
-    .arrow-up, .arrow-down {
-      animation: fadeIn 0.5s ease-in-out;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px); /* Slide in from the bottom */
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px; /* Set width for square background */
+    height: 40px; /* Set height for square background */
+    background-color: #0c1536; /* Square background color */
+    border-radius: 10px; /* Rounded corners for the square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .arrow-up {
+    top: 20px; /* Position the up arrow */
+  }
+  
+  .arrow-down {
+    bottom: 20px; /* Position the down arrow */
+  }
+  
+  /* Triangle shape (Arrow) */
+  .arrow-up::before, .arrow-down::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Up Arrow */
+  .arrow-up::before {
+    border-bottom: 15px solid white; /* White triangle pointing upwards */
+  }
+  
+  /* Down Arrow */
+  .arrow-down::before {
+    border-top: 15px solid white; /* White triangle pointing downwards */
+  }
+  
+  /* Hover Effect */
+  .arrow-up:hover, .arrow-down:hover {
+    background-color: #555; /* Darken background on hover */
+    transform: translateX(-50%) scale(1.1); /* Slightly increase size */
+  }
+
+/* Optional: Adding some animation */
+.arrow-up, .arrow-down {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Slide in from the bottom */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
     
     .dots {
       position: absolute;
