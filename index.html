@@ -247,14 +247,12 @@
 
   window.addEventListener('touchend', function(event) {
     let touchEndY = event.changedTouches[0].clientY;
-    if (touchStartY - touchEndY > 50) {
+    if (slideIndex === 1 && touchEndY - touchStartY > 50) {
+      window.location.reload(); // Refresh the page when on the first slide and swipe down
+    } else if (touchStartY - touchEndY > 50) {
       plusSlides(1); // Swipe down (next slide)
     } else if (touchEndY - touchStartY > 50) {
       plusSlides(-1); // Swipe up (previous slide)
-    }
-
-    if (slideIndex === 1 && touchEndY - touchStartY > 50) {
-      window.location.reload(); // Refresh the page when on the first slide and swipe down
     }
   });
 
