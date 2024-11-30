@@ -229,6 +229,20 @@
         dots[i].className = dots[i].className.replace(" active", "");
     }
     dots[slideIndex - 1].className += " active";
+
+    if (slideIndex === 1) {
+      document.querySelector('.arrow-up').style.display = 'none';
+    } else {
+      document.querySelector('.arrow-up').style.display = 'block';
+    }
+
+    if (slideIndex === slides.length) {
+      document.querySelector('.arrow-down').style.display = 'none';
+    } else {
+      document.querySelector('.arrow-down').style.display = 'block';
+    }
+
+    resetInactivityTimer();
   }
 
   // Initialize first slide as active
