@@ -19,9 +19,10 @@
     .slideshow-container {
       position: relative;
       width: 100%;
-      height: 100vh; /* Slideshow ocupa a maior parte da tela */
+      height: calc(100vh - env(safe-area-inset-bottom)); /* Adjust height for safe area */
       overflow: hidden;
       border-radius: 10px;
+      padding-bottom: env(safe-area-inset-bottom); /* Add padding for bottom buttons */
     }
     .slides {
       display: none;
