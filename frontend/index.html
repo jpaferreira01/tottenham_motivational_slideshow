@@ -4,7 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vertical Slideshow</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #132257;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 20px);
+      overflow: hidden;
+      border-radius: 10px;
+      padding-bottom: 20px;
+    }
+    .slides {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      background-color: #132257;
+      background-image: url('https://raw.githubusercontent.com/jpaferreira01/tottenham_motivational_slideshow/refs/heads/main/frontend/images/tottenham_logo_bg.png'); /* Test with this image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .slides.active {
+      opacity: 1;
+      background-color: #132257;
+      transform: translateY(0);
+    }
+    .slides.previous {
+      transform: translateY(-100%);
+    }
+    .slides.next {
+      transform: translateY(100%);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0px;
+    }
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    /* Basic Styles for Arrows */
+    .arrow-up, .arrow-down {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px; /* Set width for square background */
+      height: 40px; /* Set height for square background */
+      background-color: #0c1536; /* Square background color */
+      border-radius: 10px; /* Rounded corners for the square */
+      color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .arrow-up {
+      top: 20px; /* Position the up arrow */
+    }
+
+    .arrow-down {
+      bottom: 20px; /* Position the down arrow */
+    }
+
+    /* Triangle shape (Arrow) */
+    .arrow-up::before, .arrow-down::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      position: absolute;
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Adjust for perfect centering */
+      transition: transform 0.3s ease;
+    }
+
+    /* Up Arrow */
+    .arrow-up::before {
+      border-bottom: 15px solid white; /* White triangle pointing upwards */
+      left: 25%;
+    }
+
+    /* Down Arrow */
+    .arrow-down::before {
+      border-top: 15px solid white; /* White triangle pointing downwards */
+      left: 25%;
+    }
+
+    /* Hover Effect */
+    .arrow-up:hover, .arrow-down:hover {
+      background-color: #555; /* Darken background on hover */
+      color: transparent;
+      transform: translateX(-50%) scale(1.1); /* Slightly increase size */
+    }
+    
+    .dots {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      text-align: center;
+      z-index: 1;
+    }
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 5px 0;
+      background-color: #717171;
+      border-radius: 50%;
+      display: block;
+      transition: background-color 0.6s ease;
+    }
+    .active, .dot:hover {
+      background-color: #132257;
+    }
+    @media screen and (max-width: 600px) {
+      .slideshow-container {
+        height: calc(100vh - 50px);
+      }
+      .arrow-down {
+        bottom: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
 
