@@ -5,15 +5,22 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import re
+from selenium.webdriver.chrome.options import Options
 
 
 def get_title_message():
-    # Setup the WebDriver
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+
+    # Set up Chrome options
+    options = Options()
+    options.add_argument("--headless")  # Run in headless mode (no GUI)
+    options.add_argument("--no-sandbox")  # Prevent sandboxing issues
+    options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+    options.add_argument("--remote-debugging-port=9222")  # Avoid 'DevToolsActivePort' error
+
+    # Initialize the ChromeDriver with the options
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     message = ""
     
-
     # Extract the last opponent (adjust the CSS selector accordingly)
     #home = driver.find_element(By.CSS_SELECTOR, '#sports-app > div > div:nth-child(3) > div > div:nth-child(3) > div > div > div > div > div:nth-child(1) > div.imso_mh__tm-a-sts > div.imso-ani.imso_mh__tas > div > div.imso_mh__first-tn-ed.imso_mh__tnal-cont.imso-tnol > div.imso_mh__tm-nm.imso-medium-font.imso_mh__tm-nm-ew > div > span')
     #home_score = driver.find_element(By.CSS_SELECTOR, '#sports-app > div > div:nth-child(3) > div > div:nth-child(3) > div > div > div > div > div:nth-child(1) > div.imso_mh__tm-a-sts > div.imso-ani.imso_mh__tas > div > div.imso_mh__scr-sep > div > div > div.imso_mh__l-tm-sc.imso_mh__scr-it.imso-light-font')
