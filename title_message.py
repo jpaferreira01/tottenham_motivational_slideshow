@@ -63,7 +63,6 @@ def update_index(result):
     current_phrase = re.search(r'<div class="text" id="dynamic_title-message">(.+?)</div>', html_content)
     if current_phrase:
         old_phrase = current_phrase.group(1)
-        print(f"Old phrase: {old_phrase}")
 
     # Replace the old phrase with the new result
     updated_html = html_content.replace(
@@ -75,7 +74,6 @@ def update_index(result):
 
 
 result = get_title_message()
-print(result)
 update_index(result)
 
 
