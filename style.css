@@ -103,6 +103,9 @@ img {
   top: 50%; /* Center vertically */
   transform: translateY(-50%); /* Adjust for perfect centering */
   transition: transform 0.3s ease;
+  border-radius: 10px;
+  text-align: center;
+  border: 3px solid #132257;
 }
 /* Up Arrow */
 .arrow-up::before {
