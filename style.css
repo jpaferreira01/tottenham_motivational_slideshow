@@ -50,7 +50,7 @@ img {
 .title_text {
   position: absolute;
   font-family: 'League Spartan', sans-serif;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-65%, -65%);
   font-size: 36px;
