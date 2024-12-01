@@ -31,10 +31,10 @@ def get_title_message():
         away_score = driver.find_element(By.CSS_SELECTOR, '#sports-app > div > div:nth-child(3) > div > div:nth-child(3) > div > div > div > div > div:nth-child(1) > div.imso_mh__tm-a-sts > div.imso-ani.imso_mh__tas > div > div.imso_mh__scr-sep > div > div > div.imso_mh__r-tm-sc.imso_mh__scr-it.imso-light-font')  # Example selector
 
         # Print the extracted text for debugging
-        print(f"Home Team: {home.text}")
-        print(f"Home Score: {home_score.text}")
-        print(f"Away Team: {away.text}")
-        print(f"Away Score: {away_score.text}")
+        #print(f"Home Team: {home.text}")
+        #print(f"Home Score: {home_score.text}")
+        #print(f"Away Team: {away.text}")
+        #print(f"Away Score: {away_score.text}")
 
         if home.text == "Tottenham":
             opponent = away.text
@@ -66,7 +66,6 @@ def update_index(result):
 
 
 result = get_title_message()
-print(result)
 update_index(result)
 
 
