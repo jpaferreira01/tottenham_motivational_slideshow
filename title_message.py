@@ -60,19 +60,15 @@ def update_index(result):
         html_content = file.read()
     
     #Extract the current text inside the dynamic-message div
-    current_phrase = re.search(r'<div class="text" id="dynamic-message">(.+?)</div>', html_content)
+    current_phrase = re.search(r'<div class="text" id="dynamic_title-message">(.+?)</div>', html_content)
     if current_phrase:
         old_phrase = current_phrase.group(1)
         print(f"Old phrase: {old_phrase}")
 
     # Replace the old phrase with the new result
     updated_html = html_content.replace(
-        f'<div class="text" id="dynamic-message">{old_phrase}</div>',
-        f'<div class="text" id="dynamic-message">{result}</div>'
-    )
-
-    # Replace placeholder in the HTML
-    updated_html = html_content.replace('SLIDE_PLACEHOLDER', result)
+        f'<div class="text" id="dynamic_title-message">{old_phrase}</div>',
+        f'<div class="text" id="dynamic_title-message">{result}</div>')
     
     with open('index.html', 'w') as file:
         file.write(updated_html)
