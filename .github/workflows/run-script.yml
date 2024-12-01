@@ -23,7 +23,7 @@ jobs:
         pip install selenium webdriver-manager
 
     - name: Run Selenium Script
-      run: python title_message.py  # Replace with your script name
+      run: python frontend/title_message.py  # Replace with your script name
 
     - name: Commit and Push Changes
       run: |
