@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import re
 
 
 def get_title_message():
@@ -58,6 +59,18 @@ def update_index(result):
     with open('index.html', 'r') as file:
         html_content = file.read()
     
+    #Extract the current text inside the dynamic-message div
+    current_phrase = re.search(r'<div class="text" id="dynamic-message">(.+?)</div>', html_content)
+    if current_phrase:
+        old_phrase = current_phrase.group(1)
+        print(f"Old phrase: {old_phrase}")
+
+    # Replace the old phrase with the new result
+    updated_html = html_content.replace(
+        f'<div class="text" id="dynamic-message">{old_phrase}</div>',
+        f'<div class="text" id="dynamic-message">{result}</div>'
+    )
+
     # Replace placeholder in the HTML
     updated_html = html_content.replace('SLIDE_PLACEHOLDER', result)
     
@@ -66,6 +79,7 @@ def update_index(result):
 
 
 result = get_title_message()
+print(result)
 update_index(result)
 
 
