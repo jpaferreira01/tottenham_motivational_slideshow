@@ -76,8 +76,11 @@ def update_index(result):
         f'<div class="text" id="dynamic_title-message">{old_phrase}</div>',
         f'<div class="text" id="dynamic_title-message">{result}</div>')
     
-    with open('index.html', 'w') as file:
-        file.write(updated_html)
+    if updated_html != html_content:
+        with open('index.html', 'w') as file:
+            file.write(updated_html)
+        return True  # Indicating a change was made
+    return False  # No change was made
 
 
 result = get_title_message()

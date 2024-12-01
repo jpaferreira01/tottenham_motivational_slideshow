@@ -10,27 +10,31 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.x  # Replace with your version
+        python-version: 3.12.2  # Replace with your version
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install selenium webdriver-manager
+        pip install -r requirements.txt
 
     - name: Run Selenium Script
       run: python title_message.py  # Replace with your script name
 
-    - name: Commit and Push Changes
+    - name: Commit and Push Changes (if any)
       run: |
-        git config --local user.name "GitHub Actions"
-        git config --local user.email "actions@github.com"
-        git add .
-        git commit -m "Update dynamic message"
-        git push
+        if git diff --quiet; then
+          echo "No changes detected, skipping commit."
+        else
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add .
+          git commit -m "Update dynamic message"
+          git push
+        fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
