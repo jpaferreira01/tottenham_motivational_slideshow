@@ -56,9 +56,11 @@ img {
   font-size: 24px;
   font-weight: bold;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 10px;
+  text-align: center;
+  border: 3px solid #132257;
 }
 .text {
   position: absolute;
@@ -103,9 +105,6 @@ img {
   top: 50%; /* Center vertically */
   transform: translateY(-50%); /* Adjust for perfect centering */
   transition: transform 0.3s ease;
-  border-radius: 10px;
-  text-align: center;
-  border: 3px solid #132257;
 }
 /* Up Arrow */
 .arrow-up::before {
