@@ -1,0 +1,36 @@
+name: Run Python Script
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour (adjust as needed)
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x  # Replace with your version
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install selenium webdriver-manager
+
+    - name: Run Selenium Script
+      run: python title_message.py  # Replace with your script name
+
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "actions@github.com"
+        git add .
+        git commit -m "Update dynamic message"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
