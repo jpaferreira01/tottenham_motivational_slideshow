@@ -54,5 +54,18 @@ def get_title_message():
         driver.quit()
     return message
 
+def update_index(result):
+    with open('index.html', 'r') as file:
+        html_content = file.read()
+    
+    # Replace placeholder in the HTML
+    updated_html = html_content.replace('SLIDE_PLACEHOLDER', result)
+    
+    with open('index.html', 'w') as file:
+        file.write(updated_html)
+
+result = get_title_message()
+update_index(result)
+
 
 
