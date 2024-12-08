@@ -74,8 +74,8 @@ def update_index(result):
 
     # Replace the old phrase with the new result
     updated_html = html_content.replace(
-        f'<div class="text" id="dynamic_title_message">{old_phrase}</div>',
-        f'<div class="text" id="dynamic_title_message">{result}</div>')
+        f'<div class="title_text" id="dynamic_title_message">{old_phrase}</div>',
+        f'<div class="title_text" id="dynamic_title_message">{result}</div>')
     
     if updated_html != html_content:
         with open('index.html', 'w') as file:
