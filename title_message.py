@@ -50,9 +50,11 @@ def get_title_message():
             opponent = home.text
 
         if (home.text == "Tottenham" and int(home_score.text) > int(away_score.text)) or (away.text == "Tottenham" and int(away_score.text) > int(home_score.text)):
-            message = "Congrats Tottenham finally won and you still need a bit of motivation, beeing a Tottenham fan must be hard."
+            message = "Congrats Tottenham... finally won... and you still need motivation? Beeing a Tottenham fan must be hard."
         elif (home.text == "Tottenham" and int(home_score.text) == int(away_score.text)) or (away.text == "Tottenham" and int(away_score.text) == int(home_score.text)):
             message = f"Tottenham draw against {opponent}, you must feel disappointed"
+        elif (home.text == "Tottenham" and away.text == "Arsenal" and int(home_score.text) < int(away_score.text)) or (away.text == "Tottenham" and home.text == "Arsenal" and int(away_score.text) < int(home_score.text)):
+            message = f"Tottenham vs Arsenal: A classic mismatch. Arsenal won, but hey, it's nothing new! Time for your daily dose of motivational pills!"
         elif (home.text == "Tottenham" and int(home_score.text) < int(away_score.text)) or (away.text == "Tottenham" and int(away_score.text) < int(home_score.text)):
             message = f"Tottenham was humiliated by {opponent}, take your daily dose of motivational pills"
 
