@@ -45,7 +45,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);  /* Center the image by adjusting for its own dimensions */
+  transform: translate(-60%, -50%);  /* Center the image by adjusting for its own dimensions */
   width: auto;  /* Let the width adjust automatically */
   height: 80%;  /* Ensure the height fills the container */
   object-fit: cover; /* Ensure the image covers the container, without distortion */
@@ -72,7 +72,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-60%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 36px;
   color: black;
   padding: 10px;
