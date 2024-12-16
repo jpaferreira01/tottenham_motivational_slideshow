@@ -45,8 +45,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
   border-radius: 0px;
 }
@@ -157,8 +157,8 @@ body {
     font-size: 36px;
   }
   img {
-    width: 10%;
-    height: 10%;
+    width: 30%;
+    height: 30%;
     object-fit: cover;
     border-radius: 0px;
   }
