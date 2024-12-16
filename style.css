@@ -42,8 +42,8 @@ body {
   transform: translateY(100%);
 }
 img {
-  width: 80%;
-  height: 80%;
+  width: auto;
+  height: auto;
   object-fit: cover;
   border-radius: 0px;
 }
@@ -154,8 +154,8 @@ img {
     font-size: 36px;
   }
   img {
-    width: 40%;
-    height: 40%;
+    width: auto;
+    height: auto;
     object-fit: cover;
     border-radius: 0px;
   }
